@@ -1,11 +1,11 @@
 version: '2.4'
 
 services:
-  loppen_backup:
+  website_backup:
     build:
         context: '.'
         dockerfile: 'Dockerfile'
-    container_name: loppen_backup
+    container_name: website_backup
     restart: always
     volumes:
       - ./backup:/home/debian/backup

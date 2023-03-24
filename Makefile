@@ -4,8 +4,8 @@ build:
 	docker-compose build
 
 run:
-#	docker-compose run loppen_backup
-	docker-compose run -d loppen_backup
+#	docker-compose run website_backup
+	docker-compose run -d website_backup
 
 down:
 	docker-compose down
