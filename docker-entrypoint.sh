@@ -15,5 +15,5 @@ sudo -E perl -pi.orig -e 's/\$\{?MYSQL_USER_NAME\}?/$ENV{MYSQL_USER_NAME}/' /etc
 sudo -E perl -pi.orig -e 's/\$\{?MYSQL_PASSWORD\}?/$ENV{MYSQL_PASSWORD}/' /etc/mysql/conf.d/mysqldump.cnf
 
 sudo service cron start
-/bin/bash
-#while true; do sleep 60; done
+#/bin/bash
+while true; do sleep 60; done
