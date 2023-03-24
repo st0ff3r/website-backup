@@ -1,0 +1,23 @@
+version: '2.4'
+
+services:
+  loppen_backup:
+    build:
+        context: '.'
+        dockerfile: 'Dockerfile'
+    container_name: loppen_backup
+    restart: always
+    volumes:
+      - ./backup:/home/debian/backup
+    privileged: true
+    environment:
+        TZ: 'Europe/Copenhagen'
+        BACKUP_NAME: 'backup_name'
+        SSH_HOST_NAME: 'ssh-host'
+        SSH_DIR: '/var/www/website/public_html'
+        SSH_USER_NAME: 'user'
+        SSH_PASSWORD: 'password'
+        MYSQL_DB_NAME: 'db_name'
+        MYSQL_HOST_NAME: 'mysql-host'
+        MYSQL_USER_NAME: 'mysql_user_name'
+        MYSQL_PASSWORD: 'mysql_password'
