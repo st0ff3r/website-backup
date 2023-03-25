@@ -1,4 +1,6 @@
 docker-compose.yml
-ssh/id_rsa
-ssh/id_rsa.pub
-ssh/known_hosts
+#ssh
+#ssh/id_rsa
+#ssh/id_rsa.pub
+#ssh/known_hosts
+.git
