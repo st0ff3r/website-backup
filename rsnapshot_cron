@@ -5,6 +5,7 @@
 # To activate this cron file you have to uncomment the lines below.
 # Feel free to adapt it to your needs.
 
+MAILTO=${ADMIN_EMAIL}
 # 0 */4		* * *		root	/usr/bin/rsnapshot alpha
 # 30 3  	* * *		root	/usr/bin/rsnapshot beta
 # 0  3  	* * 1		root	/usr/bin/rsnapshot gamma

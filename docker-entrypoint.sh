@@ -14,6 +14,13 @@ sudo -E perl -pi.orig -e 's/\$\{?MYSQL_DB_NAME\}?/$ENV{MYSQL_DB_NAME}/' /etc/mys
 sudo -E perl -pi.orig -e 's/\$\{?MYSQL_USER_NAME\}?/$ENV{MYSQL_USER_NAME}/' /etc/mysql/conf.d/mysqldump.cnf
 sudo -E perl -pi.orig -e 's/\$\{?MYSQL_PASSWORD\}?/$ENV{MYSQL_PASSWORD}/' /etc/mysql/conf.d/mysqldump.cnf
 
-sudo service cron start
+sudo -E perl -pi.orig -e "s/dc_eximconfig_configtype='local'/dc_eximconfig_configtype='satellite'/" /etc/exim4/update-exim4.conf.conf
+sudo -E perl -pi.orig -e "s/dc_smarthost=''/dc_smarthost='$MAIL_SMARTHOST'/" /etc/exim4/update-exim4.conf.conf
+sudo -E perl -pi.orig -e "s/dc_smarthost=''/dc_smarthost='$MAIL_SMARTHOST'/" /etc/exim4/update-exim4.conf.conf
+
+sudo update-exim4.conf
+
+sudo -E perl -pi.orig -e 's/\$\{?ADMIN_EMAIL\}?/$ENV{ADMIN_EMAIL}/' /etc/cron.d/rsnapshot
+
+sudo cron -f
 #/bin/bash
-while true; do sleep 60; done

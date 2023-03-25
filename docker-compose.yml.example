@@ -13,6 +13,7 @@ services:
     environment:
         TZ: 'Europe/Copenhagen'
         BACKUP_NAME: 'backup_name'
+        ADMIN_EMAIL: 'email@example'
         SSH_HOST_NAME: 'ssh-host'
         SSH_DIR: '/var/www/website/public_html'
         SSH_USER_NAME: 'user'
@@ -21,3 +22,4 @@ services:
         MYSQL_HOST_NAME: 'mysql-host'
         MYSQL_USER_NAME: 'mysql_user_name'
         MYSQL_PASSWORD: 'mysql_password'
+        MAIL_SMARTHOST: 'mail-smarthost'
