@@ -54,7 +54,7 @@ RUN adduser --disabled-password --gecos "" debian && usermod -a -G dialout debia
 RUN usermod -a -G sudo debian
 RUN perl -pi.orig -e 's/(\%sudo\s+ALL\s*=\s*)\(ALL:ALL\)\s+ALL/$1\(ALL\) NOPASSWD: ALL/' /etc/sudoers
 
-COPY ssh /home/debian/.ssh
+COPY ssh/ /home/debian/.ssh
 COPY rsnapshot.conf /etc/rsnapshot.conf
 COPY rsnapshot_cron /etc/cron.d/rsnapshot
 COPY rsnapshot.log /var/log/rsnapshot.log
