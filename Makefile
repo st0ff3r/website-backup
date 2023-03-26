@@ -9,4 +9,7 @@ run:
 
 down:
 	docker-compose stop
-	docker-compose down
+	docker-compose kill
+
+sh:
+	docker-compose exec website_backup /bin/bash
