@@ -1,6 +1,13 @@
+*~
+.*~
+**/.DS_Store
 docker-compose.yml
+Dockerfile
+backup
+README.md
 #ssh
 #ssh/id_rsa
 #ssh/id_rsa.pub
 #ssh/known_hosts
-.git
+**/.git
+#**/.gitignore
