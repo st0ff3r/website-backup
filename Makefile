@@ -8,4 +8,5 @@ run:
 	docker-compose run -d website_backup
 
 down:
+	docker-compose stop
 	docker-compose down
