@@ -3,6 +3,6 @@ quick
 quote-names
 max_allowed_packet      = 16M
 host=${MYSQL_HOST_NAME}
-database=${MYSQL_DB_NAME}
+#database=${MYSQL_DB_NAME}
 user=${MYSQL_USER_NAME}
 password=${MYSQL_PASSWORD}
