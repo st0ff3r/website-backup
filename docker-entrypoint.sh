@@ -18,6 +18,9 @@ sudo -E perl -pi.orig -e "s/dc_eximconfig_configtype='local'/dc_eximconfig_confi
 sudo -E perl -pi.orig -e "s/dc_smarthost=''/dc_smarthost='$MAIL_SMARTHOST'/" /etc/exim4/update-exim4.conf.conf
 sudo -E perl -pi.orig -e "s/dc_smarthost=''/dc_smarthost='$MAIL_SMARTHOST'/" /etc/exim4/update-exim4.conf.conf
 
+sudo -E perl -pi.orig -e 's/\$\{?SSH_HOST_NAME\}?/$ENV{SSH_HOST_NAME}/' /home/debian/.ssh/config
+sudo -E perl -pi.orig -e 's/\$\{?SSH_USER_NAME\}?/$ENV{SSH_USER_NAME}/' /home/debian/.ssh/config
+
 sudo update-exim4.conf
 
 sudo -E perl -pi.orig -e 's/\$\{?ADMIN_EMAIL\}?/$ENV{ADMIN_EMAIL}/' /etc/cron.d/rsnapshot
