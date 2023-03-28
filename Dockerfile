@@ -27,7 +27,6 @@ RUN apt-get update && apt-get install -y \
 	bash \
 	sshfs \
 	rsnapshot \
-	sshpass \
 	default-mysql-client \
 	cpp \
 	gcc \
@@ -67,7 +66,16 @@ RUN chown debian:debian /var/log/rsnapshot.log
 RUN chmod 0644 /etc/cron.d/rsnapshot
 RUN touch /var/log/cron.log
 
+RUN ln -s /usr/bin/aclocal-1.16 /usr/bin/aclocal-1.15; ln -s /usr/bin/automake-1.16 /usr/bin/automake-1.15
+
 USER debian
+
+# build sshpass from source to let it read password from SSH_PASSWORD instead of SSHPASS
+RUN cd ~ && git clone https://github.com/kevinburke/sshpass.git
+RUN perl -pi.orig -e 's/args\.pwsrc\.password=getenv\("SSHPASS"\)/args\.pwsrc\.password=getenv\("SSH_PASSWORD"\)/' ~/sshpass/main.c
+RUN	ln -s ~/sshpass/README.md ~/sshpass/README
+RUN	cd ~/sshpass && ./configure && make && sudo make install
+RUN rm -fr ~/sshpass
 
 CMD /docker-entrypoint.sh
 
