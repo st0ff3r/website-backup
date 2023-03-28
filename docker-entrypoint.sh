@@ -3,7 +3,6 @@
 cd ~
 sudo chown debian:debian ~/backup
 mkdir sshfs
-echo ${SSH_PASSWORD} | sshfs -o password_stdin -o IdentityFile=~/.ssh/id_rsa ${SSH_USER_NAME}@${SSH_HOST_NAME}:/ ~/sshfs
 
 sudo -E perl -pi.orig -e 's/\$\{?SSH_DIR\}?/$ENV{SSH_DIR}/' /etc/rsnapshot.conf
 sudo -E perl -pi.orig -e 's/\$\{?MYSQL_DB_NAME\}?/$ENV{MYSQL_DB_NAME}/' /etc/rsnapshot.conf
@@ -21,9 +20,10 @@ sudo -E perl -pi.orig -e "s/dc_smarthost=''/dc_smarthost='$MAIL_SMARTHOST'/" /et
 sudo -E perl -pi.orig -e 's/\$\{?SSH_HOST_NAME\}?/$ENV{SSH_HOST_NAME}/' /home/debian/.ssh/config
 sudo -E perl -pi.orig -e 's/\$\{?SSH_USER_NAME\}?/$ENV{SSH_USER_NAME}/' /home/debian/.ssh/config
 
-sudo update-exim4.conf
+sudo -E perl -pi.orig -e 's/\$\{?SSH_USER_NAME\}?/$ENV{SSH_USER_NAME}/' /etc/cron.d/rsnapshot
+sudo -E perl -pi.orig -e 's/\$\{?SSH_HOST_NAME\}?/$ENV{SSH_HOST_NAME}/' /etc/cron.d/rsnapshot
 
-sudo -E perl -pi.orig -e 's/\$\{?ADMIN_EMAIL\}?/$ENV{ADMIN_EMAIL}/' /etc/cron.d/rsnapshot
+sudo update-exim4.conf
 
 sudo cron -f
 #/bin/bash

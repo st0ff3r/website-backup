@@ -6,5 +6,5 @@
 # Feel free to adapt it to your needs.
 
 MAILTO=${ADMIN_EMAIL}
-30 3		* * *		debian	/usr/bin/rsnapshot daily
-30 4		1 * *		debian	/usr/bin/rsnapshot monthly
+30 3		* * *		debian	SSHPASS=${SSH_PASSWORD} sshfs -o ssh_command='sshpass -e ssh' -o IdentityFile=~/.ssh/id_rsa ${SSH_USER_NAME}@${SSH_HOST_NAME}:/ ~/sshfs && /usr/bin/rsnapshot daily && sudo umount ~/sshfs;
+30 4		1 * *		debian	SSHPASS=${SSH_PASSWORD} sshfs -o ssh_command='sshpass -e ssh' -o IdentityFile=~/.ssh/id_rsa ${SSH_USER_NAME}@${SSH_HOST_NAME}:/ ~/sshfs && /usr/bin/rsnapshot monthly && sudo umount ~/sshfs;
