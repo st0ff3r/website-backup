@@ -60,6 +60,7 @@ COPY rsnapshot_cron /etc/cron.d/rsnapshot
 COPY rsnapshot.log /var/log/rsnapshot.log
 COPY mysqldump.cnf /etc/mysql/conf.d/mysqldump.cnf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY fuse.conf /etc/fuse.conf
 
 RUN chown -R debian:debian /home/debian/.ssh
 RUN chown debian:debian /var/log/rsnapshot.log
